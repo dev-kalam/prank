@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prank</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f9e2af;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4f4f;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #yesButton {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #yesButton:hover {
+            background-color: #388e3c;
+            transform: scale(1.1);
+        }
+
+        #noButton {
+            background-color: #ff4f4f;
+            color: white;
+        }
+
+        #noButton:hover {
+            background-color: #d32f2f;
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    <script>
+        function showMessage() {
+            const message = document.getElementById("message");
+            message.innerHTML = "Do you like me?";
+            message.style.animation = "fadeIn 1s ease-in-out";
+
+            const yesButton = document.getElementById("yesButton");
+            const noButton = document.getElementById("noButton");
+
+            yesButton.style.display = "inline-block";
+            noButton.style.display = "inline-block";
+
+            yesButton.onclick = function() {
+                message.innerHTML = "I like you too ❤️";
+                yesButton.style.display = "none";
+                noButton.style.display = "none";
+            };
+
+            noButton.onclick = function() {
+                message.innerHTML = "Are you sure? 😢";
+                setTimeout(showMessage, 1000);
+            };
+        }
+    </script>
+</head>
+<body onload="showMessage()">
+    <div id="message"></div>
+    <div class="button-container">
+        <button id="yesButton" style="display:none;">YES</button>
+        <button id="noButton" style="display:none;">NO</button>
+    </div>
+    <footer style="position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 14px; color: #555;">
+        &copy; 2025 Developer Kalam. All rights reserved.
+    </footer>
+    
+</body>
+</html>
